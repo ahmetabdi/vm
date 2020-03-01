@@ -45,37 +45,37 @@ base_files = ['mem.c', 'wintools.c', 'pmparser.c']
 hlapi_files = ['hlapi/windll.cpp', 'hlapi/winprocess.cpp', 'hlapi/winprocesslist.cpp']
 modular_files = ['m0dular/utils/threading.cpp', 'm0dular/utils/semaphores.cpp', 'm0dular/utils/atomic_lock.cpp', 'm0dular/utils/mutex.cpp']
 
-example = executable(
-	'example',
-	files(base_files + ['example.cpp', 'vmmem.c'] + hlapi_files),
-  c_args : c_compile_args + compile_args + compile_args_external,
-  cpp_args : cpp_compile_args + compile_args + compile_args_external,
-  link_args : compile_args + compile_args_external + link_args + link_args_external
-)
+# example = executable(
+# 	'example',
+# 	files(base_files + ['example.cpp', 'vmmem.c'] + hlapi_files),
+#   c_args : c_compile_args + compile_args + compile_args_external,
+#   cpp_args : cpp_compile_args + compile_args + compile_args_external,
+#   link_args : compile_args + compile_args_external + link_args + link_args_external
+# )
 
-example_kmod = executable(
-	'kmod_example',
-	files(base_files + ['example.cpp', 'intmem.c'] + hlapi_files),
-  c_args : c_compile_args + compile_args + compile_args_external + ['-DKMOD_MEMMAP'],
-  cpp_args : cpp_compile_args + compile_args + compile_args_external + ['-DKMOD_MEMMAP'],
-  link_args : compile_args + compile_args_external + link_args + link_args_external
-)
+# example_kmod = executable(
+# 	'kmod_example',
+# 	files(base_files + ['example.cpp', 'intmem.c'] + hlapi_files),
+#   c_args : c_compile_args + compile_args + compile_args_external + ['-DKMOD_MEMMAP'],
+#   cpp_args : cpp_compile_args + compile_args + compile_args_external + ['-DKMOD_MEMMAP'],
+#   link_args : compile_args + compile_args_external + link_args + link_args_external
+# )
 
-example_kmod_src = executable(
-	'kmod_test',
-	files(base_files + ['src/utils/Handles.cpp', 'src/utils/Memutils.cpp', 'src/utils/Logger.cpp', 'src/test.cpp', 'intmem.c'] + hlapi_files + modular_files),
-  c_args : c_compile_args + compile_args + compile_args_external + ['-DKMOD_MEMMAP', '-DNUM_THREADS=4', '-DMEMUTILS_CUSTOM_RW', '-DPATTERN_SCAN_PAGE_SCAN'],
-  cpp_args : cpp_compile_args + compile_args + compile_args_external + ['-DKMOD_MEMMAP', '-DNUM_THREADS=4', '-DMEMUTILS_CUSTOM_RW', '-DPATTERN_SCAN_PAGE_SCAN'],
-  link_args : compile_args + compile_args_external + link_args + link_args_external
-)
+# example_kmod_src = executable(
+# 	'kmod_test',
+# 	files(base_files + ['src/utils/Handles.cpp', 'src/utils/Memutils.cpp', 'src/utils/Logger.cpp', 'src/test.cpp', 'intmem.c'] + hlapi_files + modular_files),
+#   c_args : c_compile_args + compile_args + compile_args_external + ['-DKMOD_MEMMAP', '-DNUM_THREADS=4', '-DMEMUTILS_CUSTOM_RW', '-DPATTERN_SCAN_PAGE_SCAN'],
+#   cpp_args : cpp_compile_args + compile_args + compile_args_external + ['-DKMOD_MEMMAP', '-DNUM_THREADS=4', '-DMEMUTILS_CUSTOM_RW', '-DPATTERN_SCAN_PAGE_SCAN'],
+#   link_args : compile_args + compile_args_external + link_args + link_args_external
+# )
 
-example_kmod_src = executable(
-	'kmod_src',
-	files(base_files + ['src/utils/Handles.cpp', 'src/utils/Memutils.cpp', 'src/utils/Logger.cpp', 'src/Main.cpp', 'intmem.c'] + hlapi_files + modular_files),
-  c_args : c_compile_args + compile_args + compile_args_external + ['-DKMOD_MEMMAP', '-DNUM_THREADS=4', '-DMEMUTILS_CUSTOM_RW', '-DPATTERN_SCAN_PAGE_SCAN'],
-  cpp_args : cpp_compile_args + compile_args + compile_args_external + ['-DKMOD_MEMMAP', '-DNUM_THREADS=4', '-DMEMUTILS_CUSTOM_RW', '-DPATTERN_SCAN_PAGE_SCAN'],
-  link_args : compile_args + compile_args_external + link_args + link_args_external
-)
+# example_kmod_src = executable(
+# 	'kmod_src',
+# 	files(base_files + ['src/utils/Handles.cpp', 'src/utils/Memutils.cpp', 'src/utils/Logger.cpp', 'src/Main.cpp', 'intmem.c'] + hlapi_files + modular_files),
+#   c_args : c_compile_args + compile_args + compile_args_external + ['-DKMOD_MEMMAP', '-DNUM_THREADS=4', '-DMEMUTILS_CUSTOM_RW', '-DPATTERN_SCAN_PAGE_SCAN'],
+#   cpp_args : cpp_compile_args + compile_args + compile_args_external + ['-DKMOD_MEMMAP', '-DNUM_THREADS=4', '-DMEMUTILS_CUSTOM_RW', '-DPATTERN_SCAN_PAGE_SCAN'],
+#   link_args : compile_args + compile_args_external + link_args + link_args_external
+# )
 
 # example = executable(
 # 	'ttt',
@@ -86,8 +86,16 @@ example_kmod_src = executable(
 # )
 
 example_kmod_src = executable(
-	'ttt',
+	'eft',
 	files(base_files + ['eft/math.cpp', 'eft/eftstructs.cpp', 'eft/main.cpp', 'intmem.c'] + hlapi_files + modular_files),
+  c_args : c_compile_args + compile_args + compile_args_external + ['-DKMOD_MEMMAP', '-DNUM_THREADS=4', '-DMEMUTILS_CUSTOM_RW', '-DPATTERN_SCAN_PAGE_SCAN'],
+  cpp_args : cpp_compile_args + compile_args + compile_args_external + ['-DKMOD_MEMMAP', '-DNUM_THREADS=4', '-DMEMUTILS_CUSTOM_RW', '-DPATTERN_SCAN_PAGE_SCAN'],
+  link_args : compile_args + compile_args_external + link_args + link_args_external
+)
+
+example_kmod_src = executable(
+	'rust',
+	files(base_files + ['rust/math.cpp', 'rust/eftstructs.cpp', 'rust/main.cpp', 'intmem.c'] + hlapi_files + modular_files),
   c_args : c_compile_args + compile_args + compile_args_external + ['-DKMOD_MEMMAP', '-DNUM_THREADS=4', '-DMEMUTILS_CUSTOM_RW', '-DPATTERN_SCAN_PAGE_SCAN'],
   cpp_args : cpp_compile_args + compile_args + compile_args_external + ['-DKMOD_MEMMAP', '-DNUM_THREADS=4', '-DMEMUTILS_CUSTOM_RW', '-DPATTERN_SCAN_PAGE_SCAN'],
   link_args : compile_args + compile_args_external + link_args + link_args_external
@@ -109,11 +117,11 @@ example_kmod_src = executable(
 #   link_args : compile_args + compile_args_external + link_args + link_args_external
 # )
 
-example_lib = shared_library(
-	'example',
-	files(base_files + ['example.cpp', 'intmem.c'] + hlapi_files),
-  c_args : compile_args + compile_args_internal,
-  cpp_args : compile_args + compile_args_internal,
-  link_args : compile_args + compile_args_internal + link_args + link_args_internal,
-  dependencies: [dl]
-)
+# example_lib = shared_library(
+# 	'example',
+# 	files(base_files + ['example.cpp', 'intmem.c'] + hlapi_files),
+#   c_args : compile_args + compile_args_internal,
+#   cpp_args : compile_args + compile_args_internal,
+#   link_args : compile_args + compile_args_internal + link_args + link_args_internal,
+#   dependencies: [dl]
+# )

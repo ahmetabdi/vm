@@ -194,7 +194,7 @@ class WinProcess
 		VMemRead(&ctx->process, proc.dirBase, (uint64_t)&ret, address, sizeof(T));
 		return ret;
 	}
-	
+
 	uint64_t ReadChain(uint64_t base, const std::vector<uint64_t>& offsets) {
 		uint64_t result = Read<uint64_t>(base + offsets.at(0));
 		for (int i = 1; i < offsets.size(); i++) {

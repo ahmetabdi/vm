@@ -10,10 +10,14 @@ inline uint64_t localGameWorld = 0x0;
 inline uint64_t fpsCamera = 0x0;
 inline uint64_t OpticCamera = 0x0;
 
-inline  std::vector<EFTPlayer> players;
 inline	int playercount;
-inline	EFTPlayer localPlayer;
-inline	FMatrix viewMatrix;
+//inline	EFTPlayer localPlayer;
+//inline	FMatrix viewMatrix;
 
 inline	uint64_t matrix_list_base = 0;
 inline	uint64_t dependency_index_table_base = 0;
+
+
+inline  std::vector<EFTPlayer> players;
+inline EFTPlayer LocalPlayer;
+inline	matrix pViewMatrix;
